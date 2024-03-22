@@ -118,7 +118,7 @@ Notez que l' instruction `if` est située *à l'intérieur* du composant fonc
 
 ### Écouteur d'événements et gestionnaires d'événements dans un composant
 
-Vos composants de fonction peuvent inclure des gestionnaires d’événements. Avec les gestionnaires d'événements, nous pouvons exécuter du code en réponse aux interactions avec l'interface, comme un clic.
+Vos composants de fonction peuvent inclure des gestionnaires d'événements. Avec les gestionnaires d'événements, nous pouvons exécuter du code en réponse aux interactions avec l'interface, comme un clic. 
 
 ```
 function MyComponent(){
@@ -126,11 +126,15 @@ function MyComponent(){
     alert('Stop it.  Stop hovering.');
   }
   return <div onHover={handleHover}></div>;
+} 
+
+function Bonjour(){
+return "Bonjour toi"
 }
 
 ```
 
-Dans l'exemple ci-dessus, le gestionnaire d'événements est `handleHover()`. Il est transmis comme accessoire à l'élément JSX `<div>`. Nous discuterons davantage des accessoires dans une leçon ultérieure, mais pour l'instant, comprenez que les accessoires sont des informations transmises à une balise JSX.
+Dans l'exemple ci-dessus, le gestionnaire d'événements est `handleHover()`. Il est transmis comme accessoire à l'élément JSX `<div>`. Nous discuterons davantage des accessoires (props) dans une leçon ultérieure, mais pour l'instant, comprenez que les accessoires sont des informations transmises à une balise JSX.
 
 La logique de ce qui devrait se passer lorsque le survol est placé sur la souris est contenue à l'intérieur de la fonction `handleHover()`. La fonction est ensuite transmise à l' élément `<div>`.
 
@@ -143,4 +147,4 @@ return <div onHover={handleHover}></div>
 
 ```
 
-La fonction `handleHover()` est transmise sans les parenthèses que nous verrions généralement lors de l'appel d'une fonction. En effet, le transmettre comme `handleHover `indique qu'il ne doit être appelé qu'une fois l'événement survenu. Le transmettre comme `handleHover()`déclencherait la fonction immédiatement, alors soyez prudent !
+La fonction `handleHover()` est transmise sans les parenthèses, comme nous verrions généralement lors de l'appel d'une fonction. En effet, le transmettre ainsi indique qu'il ne doit être appelé qu'une fois l'événement survenu. Le transmettre comme ceci  `handleHover()` déclencherait la fonction immédiatement, alors soyez prudent !
