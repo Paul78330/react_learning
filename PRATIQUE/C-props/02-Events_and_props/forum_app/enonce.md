@@ -2,7 +2,7 @@
 
 Dans ce projet, nous allons construire les prémices d'un forum web ! Un forum est un forum de discussion en ligne où les utilisateurs peuvent échanger leurs opinions sur une variété de sujets. L'élément le plus important d'un forum est la section des commentaires. C'est ce sur quoi nous allons travailler dans ce projet.
 
-En créant cette application, vous perfectionnerez vos compétences dans les composants React en vous entraînant à utiliser des accessoires ainsi qu'en définissant, en rendant et en référençant des composants.
+En créant cette application, vous perfectionnerez vos compétences dans les composants React en vous entraînant à utiliser des props (accessoires) ainsi qu'en définissant, en rendant et en référençant des composants.
 
 ##### Configuration de l'en-tête et du corps
 
@@ -58,7 +58,7 @@ Ouvrez **Header.js** et définissez votre composant `Header`.
 
 Ce composant sera responsable des propriétés `profileImg` et `username` de notre objet `comments` transmis .
 
-Le composant `Header` doit recevoir `props`. Le composant doit renvoyer deux éléments, un élément `<img>` dont l'attribut `src` recevra la propriété `profileImg` depuis `props` et un élément `<h1>` affichant `username` depuis `props`.
+Le composant `Header` doit recevoir `props`. Le composant doit renvoyer deux éléments, un élément `<img>` dont l'attribut `src` recevra la propriété `profileImg` depuis `props` et un élément `<h1>` affichant `username` depuis `props`
 
 5 .
 
