@@ -161,16 +161,24 @@ export default function Counter() {
   const [count, setCount] = useState(0);
  
   const increment = () => setCount(prevCount => prevCount + 1);
+
  
   return (
     <div>
       <p>Wow, you've clicked that button: {count} times</p>
       <button onClick={increment}>Click here!</button>
+
     </div>
   );
 }
 
 ```
+
+> Remarque :
+>
+> Si vous avez plusieurs appels à setCount qui dépendent de la valeur actuelle de count, et qu'ils sont exécutés de manière très rapprochés dans le temps (par exemple, à l'intérieur d'une boucle ou en réponse à plusieurs événements très rapprochés), alors vous pourriez rencontrer des problèmes car tous ces appels à setCount se baseront sur la même valeur initiale de count.
+>
+> En utilisant une fonction de mise à jour, vous vous assurez que chaque mise à jour est basée sur la valeur la plus récente de l'état, car React passe l'état actuel à la fonction de mise à jour au moment de l'application de la mise à jour. C'est pourquoi, dans des situations où l'ordre et le timing des mises à jour sont importants, il est recommandé d'utiliser une fonction de mise à jour.
 
 Lorsque le bouton est enfoncé, le gestionnaire d'événements `increment()` est appelé. Dans cette fonction, nous utilisons notre setter d'état `setCount()` avec une fonction de rappel.
 
@@ -180,9 +188,9 @@ Lorsque le bouton est enfoncé, le gestionnaire d'événements `increment()` es
 
 Lorsque notre setter d'état appelle la fonction de rappel, cette *fonction de rappel du setter d'état* prend notre précédent `count` comme argument. La valeur renvoyée par ce callBack de définition d'état est utilisée comme valeur suivante de `count`(dans ce cas, `prevCount + 1`).
 
-Nous pouvons aussi simplement appeler `setCount(count +1)`et cela fonctionnerait de la même manière dans cet exemple, mais pour des raisons qui sortent du cadre de cette leçon, il est plus sûr d'utiliser la méthode de rappel.
+Nous pouvons aussi simplement appeler `setCount(count +1) ` et cela fonctionnerait de la même manière dans cet exemple, mais pour des raisons qui sortent du cadre de cette leçon, il est plus sûr d'utiliser la méthode de rappel.
 
-### Tableaux dans l'état
+### Tableaux dans l'état (state)
 
 Les tableaux JavaScript constituent le meilleur modèle de données pour gérer et afficher des listes JSX . Jetons un coup d'œil au code d'un site Web pour une pizzeria.
 
@@ -277,7 +285,7 @@ Quelques points à remarquer :
 * La syntaxe de propagation (spread operator) est la même pour les objets que pour les tableaux : `{ ...oldObject, newKey: newValue }`.
 * Nous réutilisons notre gestionnaire d'événements sur plusieurs entrées en utilisant l' attribut `name` de la balise d'entrée pour identifier de quelle entrée provient l'événement de changement.
 
-Encore une fois, lors de la mise à jour `setFormState()` de l'état à l'intérieur d'un composant fonction, on ne modifie pas le même objet (important). Nous devons copier les valeurs de l'objet précédent lors de la définition de la valeur suivante d'un état. Heureusement, la syntaxe spread rend cela très facile à faire !
+Encore une fois, lors de la mise à jour de l'état `setFormState()` à l'intérieur d'un composant fonction, on ne modifie pas le même objet (important). Nous devons copier les valeurs de l'objet précédent lors de la définition de la valeur suivante d'un état. Heureusement, la syntaxe spread rend cela très facile à faire !
 
 Chaque fois qu'une des valeurs d'entrée est mise à jour, la fonction `handleChange()` sera appelée. Dans ce gestionnaire d'événements, nous utilisons la déstructuration d'objet pour décompresser la propriété `target` de notre objet `event`, puis nous utilisons à nouveau la déstructuration d'objet pour décompresser les propriétés `name` et `value`de l' objet `target`.
 
@@ -390,7 +398,9 @@ Avec React, nous transmettons des modèles de données statiques et dynamiques �
 
 Les Hooks sont utilisés pour « se connecter » à l'état du composant interne afin de gérer les données dynamiques dans les composants de fonction.
 
-Nous utilisons le State Hook en utilisant le code ci-dessous. Le `currentState` fait référence à la valeur actuelle de l'état et `initialState`initialise la valeur de l'état pour le premier rendu du composant.
+Nous utilisons le Hook State en utilisant le code ci-dessous. 
+
+Le `currentState` fait référence à la valeur actuelle de l'état et `initialState` initialise la valeur de l'état pour le premier rendu du composant.
 
 ```
 const [currentState, stateSetter] = useState( initialState );
@@ -401,6 +411,6 @@ const [currentState, stateSetter] = useState( initialState );
 * Nous pouvons définir des gestionnaires d'événements simples en ligne dans notre JSX et des gestionnaires d'événements complexes en dehors de notre JSX.
 * Nous utilisons une fonction de rappel de définition d'état lorsque notre prochaine valeur dépend de notre valeur précédente.
 * Nous utilisons des tableaux et des objets pour organiser et gérer les données associées qui ont tendance à changer ensemble.
-* Utilisez la syntaxe répartie sur les collections de données dynamiques pour copier l'état précédent dans l'état suivant comme ceci : `setArrayState((prev) => [ ...prev ])` et `setObjectState((prev) => ({ ...prev }))`.
+* Utilisez la syntaxe répartie (spread syntaxe) sur les collections de données dynamiques pour copier l'état précédent dans l'état suivant comme ceci : `setArrayState((prev) => [ ...prev ])` et `setObjectState((prev) => ({ ...prev }))`.
 
 Il est préférable d'avoir plusieurs états plus simples au lieu d'avoir un seul objet d'état complexe.
