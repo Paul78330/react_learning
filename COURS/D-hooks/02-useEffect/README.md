@@ -84,7 +84,7 @@ Si notre effet renvoie une fonction, alors le Hook `useEffect()` la traite touj
 
 La fonction `useEffect()` appelle son premier argument (l'effet) après chaque rendu d'un composant. Nous avons appris à renvoyer une fonction de nettoyage afin de ne pas créer de problèmes de performances ni d'autres bugs, mais parfois nous souhaitons ignorer complètement l'appel de notre effet lors des nouveaux rendus.
 
-Il est courant, lors de la définition de composants de fonction, d'exécuter un effet uniquement lorsque le composant est monté (rendu pour la première fois), mais pas lorsque le composant est restitué. Le Hook Effet nous rend cela très facile à faire ! Si nous voulons appeler notre effet uniquement après le premier rendu, nous passons un tableau vide à `useEffect()`comme deuxième argument. Ce deuxième argument est appelé **tableau de dépendances** .
+Il est courant, lors de la définition de composants de fonction, d'exécuter un effet uniquement lorsque le composant est monté (rendu pour la première fois), mais pas lorsque le composant est restitué. Le Hook Effet nous rend cela très facile à faire ! Si nous voulons appeler notre effet uniquement après le premier rendu, nous passons un tableau vide à `useEffect()` comme deuxième argument. Ce deuxième argument est appelé **tableau de dépendances** .
 
 Le tableau de dépendances est utilisé pour indiquer à la méthode `useEffect()` quand appeler notre effet et quand l'ignorer. Notre effet est toujours appelé après le premier rendu, mais n'est appelé à nouveau que si quelque chose dans notre tableau de dépendances a changé de valeur entre les rendus.
 
@@ -132,7 +132,7 @@ useEffect(() => {
 }, [count]); // Only re-run the effect if the value stored by count changes
 ```
 
-### Règles des crochets
+### Règles des hooks
 
 Il y a deux règles principales à garder à l'esprit lors de l'utilisation des Hooks :
 
