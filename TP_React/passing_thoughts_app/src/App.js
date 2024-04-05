@@ -15,9 +15,20 @@ export default function App() {
       text: "They'll be removed after 15 seconds.",
       expiresAt: getNewExpirationTime(),
     },
+    //nouveau thought
   ]);
 
-  
+  const addThought = (thought) => {
+    setThoughts((prevThoughts) =>
+    [thought, ...prevThoughts])
+  }
+
+  const removeThought = (thoughtIdToRemove) => {
+    setThoughts((prevThoughts) =>
+      prevThoughts.filter((thought) => thought.id !== thoughtIdToRemove ) 
+      //filter retourne un tableau avec les éléments qui ne correspondent pas à l'id à supprimer
+    )
+  }
 
   return (
     <div className="App">
@@ -25,10 +36,10 @@ export default function App() {
         <h1>Passing Thoughts</h1>
       </header>
       <main>
-        <AddThoughtForm />
+        <AddThoughtForm addThought={addThought} />
         <ul className="thoughts">
           {thoughts && thoughts.map((thought) => (
-            <Thought thought={thought} />
+            <Thought key={thought.id} thought={thought} removeThought={removeThought}/>
           ))}
         </ul>
       </main>

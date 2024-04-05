@@ -14,9 +14,9 @@ La structure de l'application est là, mais… eh bien, ça ne marche pas vraime
 
 1. Si vous essayez d'ajouter une nouvelle pensée, cela actualise toute la page et ne fait rien.
 2. Si vous essayez de supprimer une pensée manuellement, elle plante !
-3. Les pensées ne disparaissent jamais, ce qui va à l’encontre de tout l’intérêt de l’application.
+3. Les pensées ne disparaissent jamais, ce qui va à l’encontre de tout l'intérêt de l’application.
 
-Avant de commencer, parlons du principal élément d'état stocké par l'application : un ensemble d'objets de pensée. 
+Avant de commencer, parlons du principal élément d'état stocké par l'application : un ensemble d'objets de pensée.
 
 Chacun de ces objets aura trois propriétés :
 
@@ -54,7 +54,7 @@ Dans **App.js** , recherchez où `<AddThoughtForm>` est rendu. Passez un acce
 
 Maintenant que nous passons `addThought()` au composant `AddThoughtForm`, il est temps pour nous de faire en sorte que ce composant appelle réellement cette fonction.
 
-`AddThoughtForm`a aura un certain état. Plus précisément, il contiendra la valeur de la saisie de texte et, lorsque l'utilisateur soumettra le formulaire, nous prendrons cette saisie et l'utiliserons dans un appel à `addThought()`.
+`AddThoughtForm` aura un certain état. Plus précisément, il contiendra la valeur de la saisie de texte et, lorsque l'utilisateur soumettra le formulaire, nous prendrons cette saisie et l'utiliserons dans un appel à `addThought()`.
 
 Ouvrez **AddThoughtForm.js** .
 
@@ -86,7 +86,7 @@ Maintenant, nous allons mettre à jour `handleSubmit()` pour… eh bien, soumet
 
 Dans **utilities.js,** vous verrez qu'il existe deux fonctions : `generateId()` et `getNewExpirationTime()`. Nous utiliserons ces fonctions pour obtenir les valeurs de l'identifiant unique et le délai d'expiration des nouveaux objets de pensée.
 
-De retour dans **AddThoughtForm.js** , Dans `handleSubmit()` après l'appel à `event.preventDefault()`, créez un nouvel objet de pensée avec ses trois propriétés requises : `id`(généré par `generateId()`), `text`(à partir des étapes précédentes) et `expiresAt`(généré par `getNewExpirationTime()`). Passez-le à `addThought()`.
+De retour dans **AddThoughtForm.js** , Dans `handleSubmit()` après l'appel à `event.preventDefault()`, créez un nouvel objet de pensée avec ses trois propriétés requises : `id`(généré par `generateId()`), `text`(à partir des étapes précédentes) et `expiresAt`(généré par `getNewExpirationTime()`). Passez l'objet crée à l'accessoire `addThought()`.
 
 Si vous ne savez pas comment créer un objet de pensée, reportez-vous à la procédure à suivre dans **App.js** .
 
@@ -94,7 +94,7 @@ Une fois cela fait, vous devriez pouvoir soumettre le formulaire et voir la nouv
 
 7 .															0.5 point
 
-Bien que nous créions de nouvelles idées, vous remarquerez peut-être une partie de l'expérience utilisateur qui semble un peu peu intuitive : la saisie n'est pas effacée lorsque vous soumettez le formulaire. Cela signifie que tout ce que vous avez tapé reste présent, même si ce n'est probablement pas le cas.
+Bien que nous créions de nouvelles idées, vous remarquerez peut-être une partie de l'expérience utilisateur qui semble un peu, peu intuitive : la saisie n'est pas effacée lorsque vous soumettez le formulaire. Cela signifie que tout ce que vous avez tapé reste présent, même si ce n'est probablement pas le cas.
 
 Effacez le texte de l'entrée après avoir ajouté une nouvelle pensée.
 
@@ -102,7 +102,7 @@ Effacez le texte de l'entrée après avoir ajouté une nouvelle pensée.
 
 Il ne reste plus qu'une chose à faire ici : si l'utilisateur n'a rien tapé mais qu'il soumet quand même le formulaire, une pensée vide sera créée. Nous avons tous des pensées vides de temps en temps, mais nous ne voulons probablement pas les ajouter à notre application.
 
-Pour résoudre ce problème, n'appelez que `addThought() `si l'utilisateur a tapé quelque chose dans la zone de texte. Vous utiliserez une instruction `if` pour vérifier la longueur de la variable `text` avant de créer et d'ajouter un nouvel objet de pensée. (Assurez-vous de toujours appeler `event.preventDefault()`, même si l'utilisateur n'a rien tapé.)
+Pour résoudre ce problème, n'appelez `addThought() ` que si l'utilisateur a tapé quelque chose dans la zone de texte. Vous utiliserez une instruction `if` pour vérifier la longueur de la variable `text` avant de créer et d'ajouter un nouvel objet de pensée. (Assurez-vous de toujours appeler `event.preventDefault()`, même si l'utilisateur n'a rien tapé.)
 
 ## Supprimer manuellement des pensées
 
@@ -113,7 +113,7 @@ L'application devrait proposer deux façons de supprimer des pensées :
 1. Suppression manuelle, lorsque l'utilisateur clique sur le bouton Supprimer.
 2. Suppression automatique après 15 secondes.
 
-Commençons par la première tâche. Cela nous aidera à construire l’échafaudage du second.
+Commençons par la première tâche. Cela nous aidera à construire l'échafaudage du second.
 
 Ouvrez **App.js** .
 
@@ -122,7 +122,6 @@ Tout comme nous avons ajouté une fonction pour ajouter de nouvelles pensées, n
 Sous `addThought()`, créez une nouvelle fonction appelée `removeThought()`. Il prendra l'ID de la pensée que nous voulons supprimer dans un argument appelé `thoughtIdToRemove`, et il appellera `setThoughts()` pour supprimer la pensée.
 
 Pour ce faire, vous appellerez `thoughts.filter()` pour filtrer la pensée que nous souhaitons supprimer.
-
 
 10 .															2 points
 

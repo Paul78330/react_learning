@@ -13,6 +13,6 @@ let nextId = 0;
 // Elle retourne la valeur actuelle de nextId, puis l'incrémente.
 export function generateId(){
   const result = nextId;
-  nextId += 1;
+  nextId += 1; //0 + 1 = 1
   return result;
 }

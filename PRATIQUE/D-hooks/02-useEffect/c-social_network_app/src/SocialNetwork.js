@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { get } from './mockBackEnd/fetch'
 
 export default function SocialNetwork() {
-  const [menu, setMenu] = useState(null);
+  const [menu , setMenu] = useState(null);
   useEffect(() => {
     get('/menu').then((response) => {
     setMenu(response.data)
